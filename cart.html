@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Your Bag | Wansé</title>
+
+  <link rel="stylesheet" href="style.css?v=2">
+
+  <style>
+  .demo-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background-color: rgba(30, 27, 24, 0.65);
+  }
+
+  .demo-modal.is-open {
+    display: flex;
+  }
+
+  .demo-modal-content {
+    width: 100%;
+    max-width: 520px;
+    padding: 65px 45px 50px;
+    position: relative;
+    background-color: #f7f4ef;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+  }
+
+  .demo-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    border: none;
+    background: transparent;
+    color: #625a54;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .demo-label {
+    margin-bottom: 16px;
+    color: #8a7d72;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .demo-modal-content h2 {
+    margin-bottom: 20px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 44px;
+    font-weight: 400;
+  }
+
+  .demo-modal-content > p:not(.demo-label) {
+    margin-bottom: 30px;
+    color: #675f58;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .demo-modal-button {
+    padding: 15px 28px;
+    border: none;
+    background-color: #292622;
+    color: white;
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+</style>
+
+  <script src="script.js?v=4" defer></script>
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">WANSÉ</a>
+
+    <nav>
+      <a href="index.html#shop">New In</a>
+      <a href="index.html#shop">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">
+        Cart (<span class="cart-count">0</span>)
+      </a>
+    </nav>
+  </header>
+
+  <main class="cart-page">
+    <div class="cart-heading">
+      <p class="section-label">Your selection</p>
+      <h1>Your Bag</h1>
+    </div>
+
+    <div class="cart-layout">
+      <section class="cart-items" id="cart-items">
+        <p class="empty-cart-message">
+          Your bag is currently empty.
+        </p>
+      </section>
+
+      <aside class="cart-summary">
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cart-total">£0.00</span>
+        </div>
+
+        <p class="summary-note">
+          Delivery and taxes are calculated at checkout.
+        </p>
+
+        <button
+  class="checkout-button"
+  onclick="showDemoCheckout()"
+>
+  Proceed to Checkout
+</button>
+
+        <a href="index.html#shop" class="continue-shopping">
+          Continue Shopping
+        </a>
+      </aside>
+    </div>
+  </main>
+
+  <div
+  class="demo-modal"
+  id="demo-modal"
+  aria-hidden="true"
+>
+  <div
+    class="demo-modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="demo-title"
+  >
+    <button
+  class="demo-modal-close"
+  onclick="hideDemoCheckout()"
+  aria-label="Close"
+>
+  ×
+</button>
+
+    <p class="demo-label">Portfolio Prototype</p>
+
+    <h2 id="demo-title">Demo Checkout</h2>
+
+    <p>
+      This Wansé website is a self-initiated e-commerce
+      prototype created for portfolio purposes. No payment
+      or personal information will be collected.
+    </p>
+
+    <button
+  class="demo-modal-button"
+  onclick="hideDemoCheckout()"
+>
+  Continue Browsing
+</button>
+  </div>
+</div>
+
+  <footer>
+    <p>© 2026 Wansé</p>
+    <p>London, United Kingdom</p>
+  </footer>
+  <script>
+  function showDemoCheckout() {
+    const modal = document.getElementById("demo-modal");
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function hideDemoCheckout() {
+    const modal = document.getElementById("demo-modal");
+
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+</script>
+</body>
+</html>
