@@ -196,3 +196,39 @@ if (cartItemsContainer) {
 
   renderCart();
 }
+
+const checkoutButton = document.querySelector(".checkout-button");
+const demoModal = document.querySelector("#demo-modal");
+const closeDemoButtons = document.querySelectorAll("[data-close-demo]");
+
+function openDemoModal() {
+  demoModal.classList.add("is-open");
+  demoModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDemoModal() {
+  demoModal.classList.remove("is-open");
+  demoModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+if (checkoutButton && demoModal) {
+  checkoutButton.addEventListener("click", openDemoModal);
+
+  closeDemoButtons.forEach(function (button) {
+    button.addEventListener("click", closeDemoModal);
+  });
+
+  demoModal.addEventListener("click", function (event) {
+    if (event.target === demoModal) {
+      closeDemoModal();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeDemoModal();
+    }
+  });
+}
